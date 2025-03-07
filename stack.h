@@ -4,16 +4,8 @@
 #include <vector>
 #include <stdexcept>
 
-// Use inheritance from std::vector (choose public/private) as appropriate
 template <typename T>
-#ifndef STACK_H
-#define STACK_H
-
-#include <vector>
-#include <stdexcept>
-
-template <typename T>
-class Stack : private std::vector<T>
+class Stack : public std::vector<T>
 {
 public:
     Stack() : std::vector<T>() { }
@@ -42,6 +34,13 @@ public:
             throw std::underflow_error("Stack is empty");
         return std::vector<T>::back();
     }
+    
+    T& top() {
+    if (std::vector<T>::empty())
+        throw std::underflow_error("Stack is empty");
+    return std::vector<T>::back();
+}
+
 };
 
 #endif
