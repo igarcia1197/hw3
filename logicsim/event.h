@@ -10,7 +10,13 @@ struct Event
 };
 
 typedef struct EventLess {
-        //write the operator() required to make this a functor that compares Events by time
+    // compare two events by time so the heap become a minheap
+     bool operator()(Event* e1, Event* e2) {
+         return e1->time < e2->time;
+    }
 } EventLess;
 	
 #endif
+
+
+
