@@ -19,5 +19,3 @@ hw3_tests/*.o
 hw3_tests/*.a
 hw3_tests/*.so
 
-# Ignore logicsim build artifacts
-logicsim/
