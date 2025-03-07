@@ -1,2 +1,23 @@
 *.o
 llrec-test
+# Ignore CMake build files and test executables
+hw3_tests/CMakeFiles/
+hw3_tests/Testing/
+hw3_tests/Makefile
+hw3_tests/cmake_install.cmake
+hw3_tests/CMakeCache.txt
+hw3_tests/CTestTestfile.cmake
+hw3_tests/heap_tests/heap_tests
+hw3_tests/llrec_tests/llrec_tests
+hw3_tests/stack_tests/stack_tests
+
+# Ignore logs, temp, and debug files
+hw3_tests/compile-logs/
+hw3_tests/results/
+hw3_tests/test-output/
+hw3_tests/*.o
+hw3_tests/*.a
+hw3_tests/*.so
+
+# Ignore logicsim build artifacts
+logicsim/
