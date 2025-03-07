@@ -27,15 +27,14 @@ void print(Node* head);
  */
 void dealloc(Node* head);
 
-
 Node* readList(const char* filename)
 {
     Node* h = NULL;
     ifstream ifile(filename);
     int v;
-    if( ! (ifile >> v) ) return h;
+    if( !(ifile >> v) ) return h;
     h = new Node(v, NULL);
-    Node *t = h;
+    Node* t = h;
     while ( ifile >> v ) {
         t->next = new Node(v, NULL);
         t = t->next;
@@ -67,9 +66,12 @@ void dealloc(Node* head)
 //   function object struct declarations
 // -----------------------------------------------
 
-
-
-
+// functor that is used filter out odd numbers
+struct OddFilter {
+    bool operator()(int val) {
+        return (val % 2) != 0; // returns true if the number is odd
+    }
+};
 
 int main(int argc, char* argv[])
 {
@@ -78,18 +80,18 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    // -----------------------------------------------
-    // Feel free to update any code below this point
-    // -----------------------------------------------
     Node* head = readList(argv[1]);
     cout << "Original list: ";
     print(head);
 
-    // Test out your linked list code
+    // llfilter
+    // his will filter out nodes with odd values
+    Node* filtered = llfilter(head, OddFilter());
+    cout << "Filtered list (only evens remain): ";
+    print(filtered);
 
-
-
+    // Clean up the filtered list
+    dealloc(filtered);
     
     return 0;
-
 }
